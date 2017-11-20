@@ -1,0 +1,55 @@
+# author: Amy Mason, based on work by Stephen Burgess
+# Goal: to extract genetic associations with disease from UK biobank
+######################################################################################
+
+# snps come from file /am2609/Dirk/Dirk_vars_ukbb.txt on cardio, space seperated
+
+# outcome to test
+
+ 
+
+#### need a list of samples with a binary to whether or not an outcome occured
+setwd("C:/Dropbox/Dropbox Current/Dropbox/lpamaster/gwas/")
+
+outcomes = read.csv("ukb_hesin_diag10_20170822.tsv", sep="\t")
+
+########
+# 500k full release
+
+pcs  = read.table("Eur_QCp_PCs.txt", header=TRUE) # 500k
+sampleEUunrel = read.table("ukb_imp_chr6LPA_HRConly_EurQCp.sample", stringsAsFactors=FALSE, header=TRUE) # 500k
+samplelink    = read.table("sampleID_map.txt", stringsAsFactors=FALSE, header=TRUE) # 500k
+
+whichlink = which(samplelink[,1]%in%sampleEUunrel[,1])
+
+samplepheno = samplelink[whichlink,2]
+
+sampleEUunrel_pheno = sampleEUunrel
+sampleEUunrel_pheno[2:(dim(sampleEUunrel)[1]), 1] = samplepheno
+sampleEUunrel_pheno[2:(dim(sampleEUunrel)[1]), 2] = samplepheno
+
+whichlink2 = which(pcs[,1]%in%sampleEUunrel[,1])
+
+pcs_1 = pcs[whichlink2,3:12]
+pcs_2 = rbind(rep("C", 10), pcs_1)
+
+
+
+
+
+#####CARDIO
+
+# for starting interative session
+#sintr -N1 -n 1 -c 1 -p short -t 8:0:0
+
+# for extracting variants from UK biobank on cardio
+#gives list of whether each variant (rows) is present in each sample (columns) 
+#
+# module load qctool
+# qctool -g /scratch/curated_genetic_data/uk_biobank/imputed/interim_release/chr20impv1.bgen \
+#       -og /scratch/am2609/Dirk/chr20impv1_Dirk.bgen -incl-positions /am2609/Dirk/Dirk_vars_ukbb.txt
+
+# for running GWAS on cardio
+
+module load snptest
+snptest -data /scratch/am2609/Dirk/chr20impv1_Dirk.bgen /scratch/sb452/lpa/lpa.sample -o /scratch/sb452/lpa/ex.out -frequentist 1 -method score -pheno I739 

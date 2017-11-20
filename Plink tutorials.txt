@@ -1,0 +1,14 @@
+http://zzz.bwh.harvard.edu/plink/tutorial.shtml
+
+
+
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise1.pdf
+
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise2.pdf
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise3.pdf
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise4.pdf
+
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise5.pdf
+http://sites.tufts.edu/cbi/files/2013/01/GWAS_Exercise6.pdf
+
+https://github.com/PheWAS/PheWAS/blob/master/inst/doc/PheWAS-package.pdf

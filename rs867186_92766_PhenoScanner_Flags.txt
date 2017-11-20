@@ -1,0 +1,11 @@
+Variant Annotation:
+All variants are found in either dbSNP (version 138) or 1000 Genomes phase 3 (MAF>=0.5% biallelic or small indel)
+
+GWAS associations:
+All variants are found in the GWAS database
+
+GWAS catalogues:
+All variants are found in the GWAS catalogues database
+
+Exomechip associations:
+All variants are found in the Exomechip database
